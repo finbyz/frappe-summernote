@@ -28,15 +28,10 @@ Now, place the build.json file in your public folder.
 In your hooks.py include the following code:
 
 `app_include_js = [`
-
 `	"assets/js/summernote.min.js",`
-
 `	"assets/js/comment_desk.min.js",`
-
 `	"assets/js/editor.min.js",`
-
 `	"assets/js/timeline.min.js"`
-
 `]`
 
 `app_include_css = [`
@@ -46,8 +41,8 @@ In your hooks.py include the following code:
 **Step: 5**
 After completing all the above steps, execute the following commands:
 
-`bench migrate`
-`bench restart`
+`bench migrate` 
+`bench restart` 
 `bench build`
 
 Now, you will be able to see your OLD Text Editor - SUMMER NOTE
