@@ -35,19 +35,19 @@ In your hooks.py include the following code:
 
 	"assets/js/summernote.min.js",
 
-	"assets/js/comment_desk.min.js",`
+	"assets/js/comment_desk.min.js",
 
-`	"assets/js/editor.min.js",`
+	"assets/js/editor.min.js",
 
-`	"assets/js/timeline.min.js"`
+	"assets/js/timeline.min.js"
 
-`]`
+]
 
-`app_include_css = [`
+app_include_css = [
 
-`	"assets/css/summernote.min.css"`
+	"assets/css/summernote.min.css"
 
-`]`
+]`
 
 **Step: 5**
 After completing all the above steps, execute the following commands:
