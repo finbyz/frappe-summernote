@@ -28,10 +28,15 @@ Now, place the build.json file in your public folder.
 In your hooks.py include the following code:
 
 `app_include_js = [`
+
 `	"assets/js/summernote.min.js",`
+
 `	"assets/js/comment_desk.min.js",`
+
 `	"assets/js/editor.min.js",`
+
 `	"assets/js/timeline.min.js"`
+
 `]`
 
 `app_include_css = [`
