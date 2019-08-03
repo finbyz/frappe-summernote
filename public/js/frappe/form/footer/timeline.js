@@ -626,44 +626,45 @@ frappe.ui.form.Timeline = class Timeline {
 
 	insert_comment(comment_type, comment, btn) {
 		var me = this;
-		return frappe.call({
-			method: "frappe.desk.form.utils.add_comment",
-			args: {
-				doc:{
-					doctype: "Communication",
-					communication_type: "Comment",
-					comment_type: comment_type || "Comment",
-					reference_doctype: this.frm.doctype,
-					reference_name: this.frm.docname,
-					content: comment,
-					sender: frappe.session.user
-				}
-			},
-			btn: btn,
-			callback: function(r) {
-				if(!r.exc) {
-					me.comment_area.val('');
-					frappe.utils.play_sound("click");
+		if(!this.frm.doc.__islocal){
+			return frappe.call({
+				method: "frappe.desk.form.utils.add_comment",
+				args: {
+					doc:{
+						doctype: "Communication",
+						communication_type: "Comment",
+						comment_type: comment_type || "Comment",
+						reference_doctype: this.frm.doctype,
+						reference_name: this.frm.docname,
+						content: comment,
+						sender: frappe.session.user
+					}
+				},
+				btn: btn,
+				callback: function(r) {
+					if(!r.exc) {
+						me.comment_area.val('');
+						frappe.utils.play_sound("click");
 
-					var comment = r.message;
-					var comments = me.get_communications();
-					var comment_exists = false;
-					for (var i=0, l=comments.length; i<l; i++) {
-						if (comments[i].name==comment.name) {
-							comment_exists = true;
-							break;
+						var comment = r.message;
+						var comments = me.get_communications();
+						var comment_exists = false;
+						for (var i=0, l=comments.length; i<l; i++) {
+							if (comments[i].name==comment.name) {
+								comment_exists = true;
+								break;
+							}
 						}
-					}
-					if (comment_exists) {
-						return;
-					}
+						if (comment_exists) {
+							return;
+						}
 
-					me.frm.get_docinfo().communications = comments.concat([r.message]);
-					me.refresh(true);
+						me.frm.get_docinfo().communications = comments.concat([r.message]);
+						me.refresh(true);
+					}
 				}
-			}
-		});
-
+			});
+		}
 	}
 
 	delete_comment(name) {
